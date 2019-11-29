@@ -1,0 +1,35 @@
+server:
+  port: 8070
+  servlet:
+    context-path: /
+
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+      
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ssar?serverTimezone=Asia/Seoul&useSSL=false&allowPublicKeyRetrieval=true
+    username: ssar
+    password: bitc5600
+    
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      use-new-id-generator-mappings: false
+    show-sql: true
+    #show-sql : 실제로 동작하는 sql문을 보고싶을때 true로 해서 사용(콘솔에 찍힘)
+    properties:
+      hibernate.enable_lazy_load_no_trans: true
+      #레이지로드 : 뒤늦은 로딩이 가능하게 함.(하나의 모델에서 오브젝트를 가지고 있을때, 최초에 필요한것만 로드하고 원하는 오브젝트를 나중에 로드할 수 있음)
+      hibernate.format_sql: true
+  http:
+    encoding:
+      charset: UTF-8
+      enabled: true
+      force: true
